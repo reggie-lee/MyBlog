@@ -1,0 +1,40 @@
+.float-left {
+    float: left !important;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.inline {
+    display: inline;
+}
+
+.block {
+    display: block;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.date {
+    margin-left: 12px;
+    padding-left: 8px;
+    border-left: #9a9a9a 1px solid;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-size: medium;
+    font-weight: normal;
+}
+
+.head {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
