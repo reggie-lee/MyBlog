@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/lib.js"></script>
+    <script src="/post.js"></script>
+    <title>New Post | My Blog</title>
+</head>
+
+<body>
+    <h1><a href="/">My Blog</a></h1>
+    <div>
+        <span>New Post</span>
+        <a href="/login.html" class="float-right">Log In</a>
+    </div>
+    <hr>
+    <main id="main">
+        <h2>New Post</h2>
+        <div id="title" role="textbox" class="editor-post-title" contenteditable></div>
+        <div id="content" role="textbox" class="editor-post-content" contenteditable></div>
+        <div>
+            <time class="date" datetime="${gmtModified}">Apr 2, 2021</time>
+            <button class="float-right" type="submit" id="publish">Publish</button>
+        </div>
+    </main>
+    <hr>
+    <div>
+        <span>❮ Previous</span>
+        <span class="float-right">Next ❯</span>
+    </div>
+</body>
+
+</html>

@@ -1,4 +1,26 @@
 
+function $id(id) {
+    return document.getElementById(id);
+}
+
+function $new(tag) {
+    return document.createElement(tag);
+}
+
+/** @param {string} text */
+function generateSummary(text) {
+    return `<p>${text.slice(0, 700)}</p>`;
+}
+
+/** @param {string} text */
+function generateContent(text) {
+    return text.split('\n').map(t => `<p>${t}</p>`).join("");
+}
+
+/**
+ * @param {Response} resp
+ * @param {string | object} text
+ */
 function CodeMsg(resp, text) {
     let json;
     if (typeof text === "string") {

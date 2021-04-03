@@ -20,11 +20,14 @@
 }
 
 .date {
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+h2 > .date {
     margin-left: 12px;
     padding-left: 8px;
     border-left: #9a9a9a 1px solid;
-    text-transform: uppercase;
-    white-space: nowrap;
     font-size: medium;
     font-weight: normal;
 }
@@ -37,4 +40,27 @@
 .h2 {
     font-size: 1.5em;
     font-weight: bold;
+}
+
+.editor-post-title,
+.editor-post-content {
+    display: block;
+    width: auto;
+    margin: 1em 0.5em 1em 0.5em;
+    overflow-wrap: break-word;
+    cursor: text;
+}
+
+.editor-post-content {
+    min-height: 5em;
+}
+
+.editor-post-title:empty::before {
+    content: "Title";
+    color: gray;
+}
+
+.editor-post-content:empty::before {
+    content: "Write your blog";
+    color: gray;
 }

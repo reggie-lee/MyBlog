@@ -1,15 +1,14 @@
 
 function createArticle(title, content, gmtModified, username) {
     const date = new Date(gmtModified).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
-    const div = document.createElement('div');
-    div.innerHTML = `<h2>${title}<time datetime="${gmtModified}" class="date">${date}</time></h2>
-<p>${content}</p>
-<p><b>Created by</b> <a href="/user/${username}">${username}</a></p>`;
+    const div = $new('div');
+    div.innerHTML = `<h2>${title}<time datetime="${gmtModified}" class="date">${date}</time></h2>` +
+        `${generateContent(content)}<p><b>Created by</b> <a href="/user/${username}">${username}</a></p>`;
     return div;
 }
 
 async function main() {
-    const mainElement = document.getElementById("main");
+    const mainElement = $id("main");
 
     function notFound() {
         document.title = "Not Found | My Blog";
@@ -18,7 +17,7 @@ async function main() {
             "The blog may not exist.",
             Date.now(),
             "admin",
-        ), document.createElement('br'));
+        ), $new('br'));
     }
 
     const match = window.location.pathname.match(/\/blog\/([0-9]+)$/);
@@ -27,8 +26,8 @@ async function main() {
     }
 
     const blogId = match[1];
-    const prev = document.getElementById("prev");
-    const next = document.getElementById("next");
+    const prev = $id("prev");
+    const next = $id("next");
     const bid = parseInt(blogId);
     // @ts-ignore
     prev.href = `/blog/${bid - 1}`, next.href = `/blog/${bid + 1}`;
@@ -47,7 +46,7 @@ async function main() {
         data.content,
         data.gmtModified,
         data.username,
-    ), document.createElement('br'));
+    ), $new('br'));
 }
 
 window.onload = main;
