@@ -1,16 +1,5 @@
 
-function createEntry(blogId, title, content, gmtModified, username) {
-    const date = new Date(gmtModified).toLocaleDateString("en-US",
-        { year: "numeric", month: "short", day: "numeric" });
-    const div = $new('div');
-    div.innerHTML = `<h2><a href="/blog/${blogId}">${title}</a>` +
-        `<time datetime="${gmtModified}" class="date">${date}</time></h2>` +
-        `${generateSummary(content)}<p><b>Created by</b> ` +
-        `<a href="/user/${username}">${username}</a></p>`;
-    return div;
-}
-
-async function main() {
+window.onload = async function () {
     const data = await api("blog/get/all");
 
     const mainElement = $id("main");
@@ -21,8 +10,7 @@ async function main() {
             entry.content,
             entry.gmtModified,
             entry.username,
+            generateSummary
         ), $new('br'));
     }
 }
-
-window.onload = main;

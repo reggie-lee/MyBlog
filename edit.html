@@ -7,24 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <script src="/lib.js"></script>
-    <script src="/post.js"></script>
-    <title>New Post | My Blog</title>
+    <script src="/edit.js"></script>
+    <title>Edit Post | My Blog</title>
 </head>
 
 <body>
     <h1><a href="/">My Blog</a></h1>
     <div>
-        <span>New Post</span>
+        <span>Edit Post</span>
         <a href="/login.html" class="float-right">Log In</a>
     </div>
     <hr>
     <main id="main">
-        <h2>New Post</h2>
+        <h2>Edit Post</h2>
         <div id="title" role="textbox" class="editor-post-title" contenteditable></div>
         <div id="content" role="textbox" class="editor-post-content" contenteditable></div>
         <div>
             <time id="time" class="date" datetime="">...</time>
-            <button class="float-right" type="submit" id="publish">Publish</button>
+            <button class="float-right" type="submit" id="update">Update</button>
         </div>
     </main>
     <hr>

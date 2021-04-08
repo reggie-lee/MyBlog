@@ -32,6 +32,12 @@ h2 > .date {
     font-weight: normal;
 }
 
+span.vbar {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    border-left: #9a9a9a 1px solid;
+}
+
 .head {
     font-size: inherit;
     font-weight: inherit;
