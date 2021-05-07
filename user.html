@@ -8,29 +8,32 @@
     <title>My Blog</title>
     <link rel="stylesheet" href="/style.css">
     <script src="/lib.js"></script>
-    <script src="/login.js"></script>
+    <script src="/user.js"></script>
 </head>
 
 <body>
     <h1><a href="/">My Blog</a></h1>
     <div id="navbar">
         <a href="/post.html">New Post</a>
-        <span class="float-right">Log In</span>
+        <a href="/login.html" class="float-right">Log In</a>
     </div>
     <hr>
-    <main>
-        <h2>Log In</h2>
-        <form id="login-form" action="#">
+    <main id="main">
+        <h2 id="username-title"></h2>
+        <div id="register-form">
             <p>
-                <input id="username" type="text" placeholder="Username / E-Mail" name="username" required>
+                <b>UID:</b>
+                <span id="uid"></span>
             </p>
             <p>
-                <input id="password" type="password" placeholder="Password" name="pwd" required>
+                <b>Username:</b>
+                <span id="username"></span>
             </p>
             <p>
-                <button id="login" type="submit">Login</button>
+                <b>E-Mail:</b>
+                <span id="email"></span>
             </p>
-        </form>
+        </div>
     </main>
     <hr>
     <div>

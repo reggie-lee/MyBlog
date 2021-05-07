@@ -1,5 +1,5 @@
 
-window.onload = async function () {
+Onloads.push(async function () {
     const mainElement = $id("main");
 
     const match = window.location.pathname.match(/\/edit\/([0-9]+)$/);
@@ -31,4 +31,4 @@ window.onload = async function () {
         updateBlog(parseInt(blogId), title.innerText, content.innerText, "PUBLIC")
             .then(buttonSuccess(update), buttonFailure(update));
     };
-}
+})

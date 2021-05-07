@@ -1,9 +1,9 @@
 
-window.onload = async function () {
+Onloads.push(async function () {
     const data = await api("blog/get/all");
 
     const mainElement = $id("main");
-    for (const entry of reversed(data)) {
+    for (const entry of data.content) {
         mainElement.append(createEntry(
             entry.blogId,
             entry.title,
@@ -13,4 +13,4 @@ window.onload = async function () {
             generateSummary
         ), $new('br'));
     }
-}
+})

@@ -44,6 +44,22 @@ function CodeMsg(resp, text) {
         return Error(`${resp.status}: ${text}`);
 }
 
+/** @param {Response} resp */
+async function unwrap(resp) {
+    if (!resp.ok) {
+        throw resp;
+    }
+    const json = await resp.json();
+    if (typeof json.code !== "number"
+        || typeof json.msg !== "string") {
+        throw json;
+    }
+    if (json.code != 200) {
+        throw [json.code, json.msg];
+    }
+    return json.data;
+}
+
 /**
  * @param {string} url
  * @param {object} [body]
@@ -51,9 +67,13 @@ function CodeMsg(resp, text) {
 async function api(url, body) {
     const resp = await (
         typeof body === "undefined" ?
-            fetch(`/api/${url}`) :
+            fetch(`/api/${url}`, {
+                method: "GET",
+                credentials: "same-origin"
+            }) :
             fetch(`/api/${url}`, {
                 method: "POST",
+                credentials: "same-origin",
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json"
@@ -61,14 +81,15 @@ async function api(url, body) {
                 body: JSON.stringify(body)
             })
     );
-    if (!resp.ok) {
-        throw CodeMsg(resp, await resp.text());
-    }
-    const json = await resp.json();
-    if (typeof json.data === "undefined") {
-        throw CodeMsg(resp, json);
-    }
-    return json.data;
+    return unwrap(resp);
+}
+
+/**
+ * @param {string} url
+ * @param {string | string[][] | Record<string, string> | URLSearchParams} params
+ */
+function get(url, params) {
+    return url.toString() + "?" + new URLSearchParams(params).toString();
 }
 
 function publishBlog(
@@ -92,6 +113,7 @@ function updateBlog(
     status
 ) {
     return api("/blog/update", {
+        username: "Admin",
         blogId,
         title,
         content,
@@ -159,7 +181,7 @@ function createEntry(blogId, title, content, gmtModified, username, formatter) {
 /** @param {HTMLElement} mainElement */
 function notFound(mainElement) {
     document.title = "Not Found | My Blog";
-    mainElement.append(createEntry(
+    mainElement.replaceWith(createEntry(
         null,
         "Not Found",
         "The blog may not exist.",
@@ -169,27 +191,77 @@ function notFound(mainElement) {
     ), $new('br'));
 }
 
-function buttonFailure(button) {
+function buttonFailure(button, func) {
+    const text = button.innerText;
+    if (typeof func === "undefined") {
+        func = () => {
+            button.disabled = false;
+            button.innerText = text;
+        };
+    }
     return reason => {
-        const text = button.innerText;
         console.error(reason);
         button.disabled = true;
         button.innerText = `${text} Failure`;
-        setTimeout(() => {
-            button.disabled = false;
-            button.innerText = text;
-        }, 1500);
+        setTimeout(func, 1500, reason);
         throw Error(`${text} failure`);
     }
 }
 
-function buttonSuccess(button) {
+function buttonSuccess(button, func) {
+    if (typeof func === "undefined") {
+        func = result => {
+            window.location.href = `/blog/${result.blogId}`;
+        };
+    }
     return result => {
         button.disabled = true;
         button.innerText = "Success";
         console.log(result);
-        setTimeout(() => {
-            window.location.href = `/blog/${result.blogId}`;
-        }, 500);
+        setTimeout(func, 500, result);
     }
 }
+
+class Onloads {
+    static onloads = [];
+    static push(func) {
+        Onloads.onloads.push(func);
+    }
+}
+
+window.onload = e => {
+    for (const f of Onloads.onloads) {
+        try {
+            f(e);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+};
+
+Onloads.push(function () {
+    const navbar = $id("navbar");
+    const username = sessionStorage.getItem("username");
+    if (typeof username === "string") {
+        // @ts-ignore
+        navbar.children[1].innerText = `@${username}`;
+        // @ts-ignore
+        navbar.children[1].href = `/user/${username}`;
+
+        navbar.children[1].insertAdjacentHTML("beforebegin",
+            `<a id="logout" href="javascript:void(0)">Log Out</a>`);
+        $id("logout").onclick = () => {
+            const clear = () => {
+                sessionStorage.clear();
+                location.reload();
+
+            };
+            api("logout").catch(clear).then(clear);
+        };
+    } else {
+        // @ts-ignore
+        navbar.children[0].href = "/register.html";
+        // @ts-ignore
+        navbar.children[0].innerText = "Register";
+    }
+});

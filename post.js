@@ -1,5 +1,5 @@
 
-window.onload = function () {
+Onloads.push(function () {
     /** @type {any} */
     const time = $id("time");
     const now = new Date();
@@ -11,7 +11,7 @@ window.onload = function () {
     const content = $id("content");
     const publish = $id("publish");
     publish.onclick = () => {
-        publishBlog("admin", title.innerText, content.innerText, "PUBLIC")
+        publishBlog("Admin", title.innerText, content.innerText, "PUBLIC")
             .catch(buttonFailure(publish)).then(buttonSuccess(publish));
     };
-}
+})
