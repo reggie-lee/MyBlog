@@ -7,7 +7,6 @@ Onloads.push(async function () {
         // @ts-ignore
         const form = new FormData(registerForm);
         const body = Object.fromEntries(form.entries());
-        body["userIdentity"] = "BLOGGER";
         // @ts-ignore
         body["age"] = 17;
         body["gender"] = "UNKNOWN";
