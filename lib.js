@@ -222,6 +222,18 @@ function buttonSuccess(button, func) {
     }
 }
 
+function logout(redirect) {
+    const clear = () => {
+        sessionStorage.clear();
+        if (typeof redirect === "string") {
+            window.location.href = redirect;
+        } else {
+            window.location.reload();
+        }
+    };
+    api("logout").catch(clear).then(clear);
+}
+
 class Onloads {
     static onloads = [];
     static push(func) {
@@ -250,14 +262,7 @@ Onloads.push(function () {
 
         navbar.children[1].insertAdjacentHTML("beforebegin",
             `<a id="logout" href="javascript:void(0)">Log Out</a>`);
-        $id("logout").onclick = () => {
-            const clear = () => {
-                sessionStorage.clear();
-                location.reload();
-
-            };
-            api("logout").catch(clear).then(clear);
-        };
+        $id("logout").onclick = () => logout();
     } else {
         // @ts-ignore
         navbar.children[0].href = "/register.html";

@@ -1,8 +1,16 @@
 
 Onloads.push(async function () {
-    const data = await api("blog/get/all");
-
     const mainElement = $id("main");
+
+    const searchBox = $id("search");
+    searchBox.onkeydown = e => {
+        if (e.code == "Enter") {
+            // @ts-ignore
+            window.location.href = "/search/" + encodeURI(searchBox.value);
+        }
+    };
+
+    const data = await api("blog/get/all");
     for (const entry of data.content) {
         mainElement.append(createEntry(
             entry.blogId,

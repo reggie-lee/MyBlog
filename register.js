@@ -9,16 +9,13 @@ Onloads.push(async function () {
         const body = Object.fromEntries(form.entries());
         body["userIdentity"] = "BLOGGER";
         // @ts-ignore
-        body["age"] = 10;
+        body["age"] = 17;
         body["gender"] = "UNKNOWN";
         body["hobby"] = "UNKNOWN";
-        // @ts-ignore
-        api("user/insert", body)
+        api("register", body)
             .catch(buttonFailure(registerButton))
             .then(buttonSuccess(registerButton, () => {
-                // @ts-ignore
-                sessionStorage.setItem("username", form.get("username"));
-                window.location.href = "/";
+                logout("/login.html");
             }));
     };
 });
