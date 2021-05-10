@@ -8,7 +8,7 @@ Onloads.push(async function () {
         return notFound(mainElement);
     }
 
-    const keyword = match[1];
+    const keyword = decodeURI(match[1]);
 
     let data;
     try {

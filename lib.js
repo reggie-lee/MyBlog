@@ -98,7 +98,7 @@ function publishBlog(
     content,
     status
 ) {
-    return api("/blog/add", {
+    return api("blog/add", {
         username,
         title,
         content,
@@ -112,7 +112,7 @@ function updateBlog(
     content,
     status
 ) {
-    return api("/blog/update", {
+    return api("blog/update", {
         username: "Admin",
         blogId,
         title,
