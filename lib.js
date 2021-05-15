@@ -46,6 +46,9 @@ function CodeMsg(resp, text) {
 
 /** @param {Response} resp */
 async function unwrap(resp) {
+    if(resp.status == 401) {
+        window.location.href = "/login.html";
+    }
     if (!resp.ok) {
         throw resp;
     }
@@ -98,7 +101,7 @@ function publishBlog(
     content,
     status
 ) {
-    return api("blog/add", {
+    return api("blog/add/blog", {
         username,
         title,
         content,
@@ -112,7 +115,7 @@ function updateBlog(
     content,
     status
 ) {
-    return api("blog/update", {
+    return api("blog/update/blog", {
         username: "Admin",
         blogId,
         title,
@@ -122,7 +125,7 @@ function updateBlog(
 }
 
 function deleteBlog(bid) {
-    return api(`/blog/delete?${new URLSearchParams({ bid })}`);
+    return api(get("blog/delete/blog", { bid }));
 }
 
 function reversed(list) {
