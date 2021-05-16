@@ -16,14 +16,6 @@ Onloads.push(async function () {
         prev.href = `/index/${page - 1}`;
     }
 
-    const searchBox = $id("search");
-    searchBox.onkeydown = e => {
-        if (e.code == "Enter") {
-            // @ts-ignore
-            window.location.href = "/search/" + encodeURI(searchBox.value);
-        }
-    };
-
     const data = await api(get("blog/get/all", { page: page.toString() }));
 
     const totalPages = data.totalPages;

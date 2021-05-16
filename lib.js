@@ -294,18 +294,24 @@ Onloads.push(function () {
     const navbar = $id("navbar");
     const username = sessionStorage.getItem("username");
     if (typeof username === "string") {
-        // @ts-ignore
-        navbar.children[1].innerText = `@${username}`;
-        // @ts-ignore
-        navbar.children[1].href = `/user/${username}`;
-
-        navbar.children[1].insertAdjacentHTML("beforebegin",
+        const anchor = /** @type {HTMLAnchorElement} */ (navbar.children[1]);
+        anchor.innerText = `@${username}`;
+        anchor.href = `/user/${username}`;
+        anchor.insertAdjacentHTML("beforebegin",
             `<a id="logout" href="javascript:void(0)">Log Out</a>`);
         $id("logout").onclick = () => logout();
     } else {
-        // @ts-ignore
-        navbar.children[0].href = "/register.html";
-        // @ts-ignore
-        navbar.children[0].innerText = "Register";
+        const anchor = /** @type {HTMLAnchorElement} */ (navbar.children[0]);
+        anchor.href = "/register.html";
+        anchor.innerText = "Register";
     }
+});
+
+Onloads.push(function () {
+    const searchBox = /** @type {HTMLInputElement} */ ($id("search"));
+    searchBox.onkeydown = e => {
+        if (e.code == "Enter") {
+            window.location.href = "/search/" + encodeURI(searchBox.value);
+        }
+    };
 });
