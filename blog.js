@@ -81,8 +81,7 @@ Onloads.push(async function () {
         next.href = "/";
     }
 
-    const data = await
-        api(`blog/get/by-id?${new URLSearchParams({ bid: blogId, })}`);
+    const data = await getBlog(blogId);
 
     if (data === null) {
         return notFound(mainElement);
@@ -96,7 +95,8 @@ Onloads.push(async function () {
         data.content,
         data.gmtModified,
         data.username,
-        generateContent
+        generateContent,
+        data.likeNum
     ), $new('br'));
 
     const submitButton = $id("submit-comment");

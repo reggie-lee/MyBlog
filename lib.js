@@ -4,6 +4,11 @@ function $id(id) {
     return document.getElementById(id);
 }
 
+/** @param {string} id */
+function $class(id) {
+    return document.getElementsByClassName(id);
+}
+
 function $new(tag) {
     return document.createElement(tag);
 }
@@ -46,7 +51,7 @@ function CodeMsg(resp, text) {
 
 /** @param {Response} resp */
 async function unwrap(resp) {
-    if(resp.status == 401) {
+    if (resp.status == 401) {
         window.location.href = "/login.html";
     }
     if (!resp.ok) {
@@ -151,15 +156,43 @@ function deleteEntry(element, bid) {
 }
 
 /**
+ * @param {string | number} bid
+ */
+function getBlog(bid) {
+    return api(get(`blog/get/by-id`, { bid: bid.toString() }));
+}
+
+/**
+ * @param {HTMLElement} element
+ * @param {number} bid
+ */
+function likeBlog(element, bid) {
+    api(get("blog/add/like", { bid: bid.toString() })).catch().then(async () => {
+        const likes = (await getBlog(bid)).likeNum;
+        element.innerHTML = `<b>Unlike(${likes})</b>`;
+        element.onclick = () => unlikeBlog(element, bid);
+    });
+}
+
+function unlikeBlog(element, bid) {
+    api(get("blog/delete/like", { bid: bid.toString() })).catch().then(async () => {
+        const likes = (await getBlog(bid)).likeNum;
+        element.innerHTML = `<b>Like(${likes})</b>`;
+        element.onclick = () => likeBlog(element, bid);
+    });
+}
+
+/**
  * @param {number | null} blogId
  * @param {string} title
  * @param {string} content
  * @param {number} gmtModified
  * @param {string} username
  * @param {(text: string) => string} formatter
+ * @param {number} [likes]
  * @returns {HTMLDivElement}
  */
-function createEntry(blogId, title, content, gmtModified, username, formatter) {
+function createEntry(blogId, title, content, gmtModified, username, formatter, likes) {
     const date = new Date(gmtModified).toLocaleDateString("en-US",
         { year: "numeric", month: "short", day: "numeric" });
     const div = $new('div');
@@ -175,6 +208,9 @@ function createEntry(blogId, title, content, gmtModified, username, formatter) {
             `${formatter(content)}<p><a href="/edit/${blogId}"><b>Edit</b></a>` +
             `<span class="vbar"></span><a href="javascript:void(0)" ` +
             `onclick="deleteEntry(this, ${blogId})"><b>Delete</b></a>` +
+            `<span class="vbar"></span>` +
+            `<a class="like-button" href="javascript:void(0)"` +
+            `onclick="likeBlog(this, ${blogId})"><b>Like(${likes})</b></a>` +
             `<span class="vbar"></span><b>Created by</b> ` +
             `<a href="/user/${username}">${username}</a></p>`;
     }

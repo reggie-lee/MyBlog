@@ -47,7 +47,8 @@ Onloads.push(async function () {
             entry.content,
             entry.gmtModified,
             entry.username,
-            generateSummary
+            generateSummary,
+            entry.likeNum
         ), $new('br'));
     }
 })

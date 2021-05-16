@@ -8,8 +8,7 @@ Onloads.push(async function () {
     }
 
     const blogId = match[1];
-    const data = await
-        api(`blog/get/by-id?${new URLSearchParams({ bid: blogId, })}`);
+    const data = await getBlog(blogId);
 
     if (data === null) {
         return notFound(mainElement);
