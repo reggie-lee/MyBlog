@@ -5,13 +5,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="./style.css">
     <script src="/lib.js"></script>
     <script src="/edit.js"></script>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Edit Post | My Blog</title>
+    <style>
+        #main{
+            height: 60%;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        #title{
+            background-color: #b8c2c9;
+            padding: 5px;
+            padding-left: 20px;
+        }
+        #content{
+            background-color: #b8c2c9;
+            padding: 5px;
+            padding-left: 20px;
+            height: 50%;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container">
     <h1><a href="/">My Blog</a></h1>
     <div id="navbar">
         <span>Edit Post</span>
@@ -24,7 +46,7 @@
         <div id="content" role="textbox" class="editor-post-content" contenteditable></div>
         <div>
             <time id="time" class="date" datetime="">...</time>
-            <button class="float-right" type="submit" id="update">Update</button>
+            <button class="float-right btn btn-default" type="submit" id="update">Update</button>
         </div>
     </main>
     <hr>
@@ -32,6 +54,7 @@
         <span>❮ Previous</span>
         <span class="float-right">Next ❯</span>
     </div>
+</div>
 </body>
 
 </html>
