@@ -6,52 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/style.css">
     <script src="/lib.js"></script>
-	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>    <script src="/login.js"></script>
-<style>
-    form p{
-        width: 50%;
-        height: auto;
-        margin: 20px auto;
-    }
-    #lgi{
-        width: 50%;
-        margin: 0 auto;
-    }
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/login.js"></script>
+    <style>
+        form p {
+            width: 50%;
+            height: auto;
+            margin: 20px auto;
+        }
 
-</style>
+        #lgi {
+            width: 50%;
+            margin: 0 auto;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
-    <h1><a href="/">My Blog</a></h1>
-    <div id="navbar">
-        <a href="/post.html">New Post</a>
-        <span class="float-right">Log In</span>
-    </div>
-    <hr>
-    <main>
-        
-        <form id="login-form" class="bs-example bs-example-form" role="form" action="#">
-            <h2 id="lgi">Log In</h2>
-            <p>
-                <input id="username" type="text" class="form-control" placeholder="Username / E-Mail" name="username" required>
-            </p>
-            <p>
-                <input id="password" class="form-control" type="password" placeholder="Password" name="pwd" required>
-            </p>
-            <p>
-                <button id="login" class="btn btn-default"type="submit" >Login</button>
-            </p>
-        </form>
-    </main>
-    <hr>
-    <div>
-        <p class="hand">❮ Previous</p>
-        <p class="hand float-right">Next ❯</p>
-    </div>
+        <h1><a href="/">My Blog</a></h1>
+        <div id="navbar">
+            <a href="/post.html">New Post</a>
+            <span class="float-right">Log In</span>
+        </div>
+        <hr>
+        <main id="main">
+            <form id="login-form" class="bs-example bs-example-form" role="form" action="#">
+                <h2 id="lgi">Log In</h2>
+                <p>
+                    <input id="username" type="text" class="form-control" placeholder="Username / E-Mail"
+                        name="username" required>
+                </p>
+                <p>
+                    <input id="password" class="form-control" type="password" placeholder="Password" name="pwd"
+                        required>
+                </p>
+                <p>
+                    <button id="login" class="btn btn-default" type="submit">Login</button>
+                </p>
+            </form>
+        </main>
+        <hr>
+        <div>
+            <p class="hand">❮ Previous</p>
+            <p class="hand float-right">Next ❯</p>
+        </div>
     </div>
 </body>
 

@@ -6,20 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/style.css">
     <script src="/lib.js"></script>
     <script src="/blog.js"></script>
-	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-    input{
-        width: 80%;
-    }
-    button{
-        margin-left: 50px;
-    }
-</style>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        input {
+            width: 80%;
+        }
+
+        button {
+            margin-left: 50px;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,27 +30,24 @@
             <a href="/post.html">New Post</a>
             <a href="/login.html" class="float-right">Log In</a>
         </div>
-    
-
-    <hr> 
-    <main id="main">
-        <br>
-    </main>
-    <hr>
-    <div id="comment-section">
-        <p><b>Comments</b></p>
-        <div>
-            <input id="your-comment" type="text" name="comment" placeholder="Add your comment">
-            <button id="submit-comment" type="button" class="btn btn-default ">Submit</button>
+        <hr>
+        <main id="main">
+        </main>
+        <hr>
+        <div id="comment-section">
+            <p><b>Comments</b></p>
+            <div>
+                <input id="your-comment" type="text" name="comment" placeholder="Add your comment">
+                <button id="submit-comment" type="button" class="btn btn-default ">Submit</button>
+            </div>
+            <div id="comments"></div>
         </div>
-        <div id="comments"></div>
+        <hr>
+        <div>
+            <a id="prev" href="#">❮ Previous</a>
+            <a id="next" href="#" class="float-right">Next ❯</a>
+        </div>
     </div>
-    <hr>
-    <div>
-        <a id="prev" href="#">❮ Previous</a>
-        <a id="next" href="#" class="float-right">Next ❯</a>
-    </div>
-</div>
 </body>
 
 </html>

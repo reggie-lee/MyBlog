@@ -227,7 +227,7 @@ function notFound(mainElement) {
         Date.now(),
         "admin",
         generateContent
-    ), $new('br'));
+    ));
 }
 
 function buttonFailure(button, func) {

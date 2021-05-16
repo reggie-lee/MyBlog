@@ -97,7 +97,7 @@ Onloads.push(async function () {
         data.username,
         generateContent,
         data.likeNum
-    ), $new('br'));
+    ));
 
     const submitButton = $id("submit-comment");
     submitButton.onclick = () => {

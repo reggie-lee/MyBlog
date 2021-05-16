@@ -49,6 +49,6 @@ Onloads.push(async function () {
             entry.username,
             generateSummary,
             entry.likeNum
-        ), $new('br'));
+        ));
     }
 })

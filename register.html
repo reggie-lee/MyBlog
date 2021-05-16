@@ -6,60 +6,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
-    <link rel="stylesheet" href="./style.css" type="text/css" charset="UTF-8">
+    <link rel="stylesheet" href="/style.css" type="text/css" charset="UTF-8">
     <script src="/lib.js"></script>
     <script src="/register.js"></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
-        form p{
+        form p {
             width: 50%;
             height: auto;
             margin: 20px auto;
         }
-        #lgi{
+
+        #lgi {
             width: 50%;
             margin: 0 auto;
         }
-    
     </style>
 </head>
 
 <body>
     <div class="container">
-    <h1><a href="/">My Blog</a></h1>
-    <div id="navbar">
-        <span>Register</span>
-        <a href="/login.html" class="float-right">Log In</a>
-    </div>
-    <hr>
-    <main>
-        
-        <form id="register-form" class="bs-example bs-example-form" role="form" action="#">
-            <h2 id="lgi">Register</h2>
-            <p>
-                <input id="username"  class="form-control" type="text" placeholder="Username" name="username" required>
-            </p>
-            <p>
-                <input id="email"  class="form-control" type="email" placeholder="E-Mail" name="email" required>
-            </p>
-            <p>
-                <input id="password"  class="form-control" type="password" placeholder="Password" name="password" required>
-            </p>
-            <p>
-                <input id="identity"  class="form-control" type="text" placeholder="Identity" name="userIdentity" value="TOURIST" required>
-            </p>
-            <p>
-                <button id="register" class="btn" type="submit">Register</button>
-            </p>
-        </form>
-    </main>
-    <hr>
-    <div>
-        <p>❮ Previous</p>
-        <p class="float-right">Next ❯</p>
-    </div>
+        <h1><a href="/">My Blog</a></h1>
+        <div id="navbar">
+            <span>Register</span>
+            <a href="/login.html" class="float-right">Log In</a>
+        </div>
+        <hr>
+        <main id="main">
+            <form id="register-form" class="bs-example bs-example-form" role="form" action="#">
+                <h2 id="lgi">Register</h2>
+                <p>
+                    <input id="username" class="form-control" type="text" placeholder="Username" name="username"
+                        required>
+                </p>
+                <p>
+                    <input id="email" class="form-control" type="email" placeholder="E-Mail" name="email" required>
+                </p>
+                <p>
+                    <input id="password" class="form-control" type="password" placeholder="Password" name="password"
+                        required>
+                </p>
+                <p>
+                    <input id="identity" class="form-control" type="text" placeholder="Identity" name="userIdentity"
+                        value="TOURIST" required>
+                </p>
+                <p>
+                    <button id="register" class="btn" type="submit">Register</button>
+                </p>
+            </form>
+        </main>
+        <hr>
+        <div>
+            <p>❮ Previous</p>
+            <p class="float-right">Next ❯</p>
+        </div>
     </div>
 </body>
 
